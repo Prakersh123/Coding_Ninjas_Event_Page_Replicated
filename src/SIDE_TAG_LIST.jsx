@@ -4,13 +4,13 @@ import axios from 'axios';
 // import uuid from 'react-uuid'
  const SIDE_TAG_LIST = (props) => {
 
-
+ 
         // const call = ()=>{
         //     console.log("hi")
         // }
          // const [tag_list,setTag]=useState([]);
     const [Final, setFinal] = useState([]);
-    const[hel]=useState("")
+    // const[hel]=useState("")
     useEffect(()=>{
         async function gtdata (){
             // console.log("pp1p")
@@ -30,7 +30,8 @@ import axios from 'axios';
             setFinal([...final_tag])
         }
            gtdata(); 
-    },[hel])
+           // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <div className='side '>
