@@ -14,12 +14,13 @@ const SubB = () => {
   })
   const [page_count, setPageCount] = useState('');
   const [Card, setCard] = useState([])
- 
+  const [Tags,setTags]=useState(['']);
  
  
   useEffect(() => {
 
     async function getData() {
+      // console.log(1)
       const config = { params: query_string }
       const res = await axios.get("https://api.codingninjas.com/api/v3/events", config)
       var final =[]
@@ -67,7 +68,7 @@ const SubB = () => {
         )
       })
     }
-      await setCard([...final])
+       setCard([...final])
       setPageCount(res.data.data.page_count)
       console.log(res);
     }
@@ -107,32 +108,107 @@ const SubB = () => {
 
   const update_sub = (e) => {
     console.log(e)
+    setTags([]);
     setquery_string((old) => {
       return {
 
         event_category: old.event_category,
         event_sub_category: e.target.attributes.value.nodeValue,
-        tag_list: old.tag_list,
-        offset: old.offset,
+        tag_list: '',
+        offset: 0,
       }
     })
   }
   const update_main = (e) => {
     console.log(e)
+    setTags([]);
     setquery_string((old) => {
       return {
 
         event_category: e.target.attributes.value.nodeValue,
         event_sub_category: 'Upcoming',
-        tag_list: old.tag_list,
+        tag_list: '',
         offset: 0,
       }
     })
+    
   }
+   
+  
+  const call_me=(e)=>{
+    console.log(e)
+    console.log(Tags)
+      const arrr= Tags.filter((ele)=>{
+        return ele===e;
+      })
+      
+      if(arrr.length===0)
+      {
+        const a = Tags;
+        a.push(e);
+        setTags(a)
+        const str = a.join();
+        setquery_string((old)=>{
+          return {
 
-  const call_me = () => {
-    alert("hi")
-  }
+            event_category: old.event_category,
+            event_sub_category: old.event_sub_category,
+            tag_list: str,
+            offset: 0,
+          }
+        })
+      }
+      else if(arrr.length===1)
+      {
+        console.log("mai else chala")
+        const me= Tags.filter((ele)=>{
+          return ele!==e
+        })
+        console.log("mai else ke bad chala")
+
+        setTags([...me]) 
+
+         console.log("hi",me) 
+        const sr = me.join();
+        setquery_string((old)=>{
+          return {
+
+            event_category: old.event_category,
+            event_sub_category: old.event_sub_category,
+            tag_list: sr,
+            offset: 0,
+          }
+        })
+
+      }
+    
+    // var dt= [...Tags];
+    //     var str =e;
+    //     console.log(dt);
+    
+        
+    //     dt =  dt.filter((ele)=>{
+    //       return ele===e;
+    //      })
+        
+    //      if(dt.length===0)
+    //     {
+    //       setTags([...Tags,str])
+    //       console.log("hi",Tags)
+    //     }
+        // else
+        // {
+
+        //   dt=[...Tags];
+        //   dt= dt.filter((ele)=>{
+        //     return ele!==e
+        //   })
+        //   setTags([...dt]);
+        // }  
+      
+        console.log("arya",Tags)
+    }
+ 
   return (
     <>
 
@@ -156,7 +232,7 @@ const SubB = () => {
       
       {Card}
 
-      <SIDE_TAG_LIST onSelect={call_me} />
+      <SIDE_TAG_LIST  onSelect={call_me} />
       {page_count?
       <nav aria-label="Page navigation example" className="last_button">
         <ul  className="pagination">

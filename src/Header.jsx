@@ -5,7 +5,7 @@ import uuid from 'react-uuid';
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid" >
-    <span className="navbar-brand" >Navbar</span>
+     <img src="https://www.codingninjas.com/assets-landing/images/CNLOGO.svg" alt="ss" width="200" height="24"/>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -14,20 +14,32 @@ import uuid from 'react-uuid';
         <li key={uuid()} className="nav-item">
           <span className="nav-link active" aria-current="page" >Home</span>
         </li>
+
         <li key={uuid()} className="nav-item">
-          <span className="nav-link active" >Link</span>
+          <span className="nav-link active" aria-current="page" >Courses</span>
         </li>
-        <li key={uuid()} className="nav-item dropdown">
-          <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </span>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li key={uuid()}><span className="dropdown-item">Another action</span></li>
-            <li key={uuid()}><span className="dropdown-item">Action</span></li>
-            <li key={uuid()}><hr className="dropdown-divider"/></li>
-            <li key={uuid()}><span className="dropdown-item" >Something else here</span></li>
-          </ul>
+
+
+        <li key={uuid()} className="nav-item">
+          <span className="nav-link active" >Practice</span>
         </li>
+
+        <li key={uuid()} className="nav-item">
+          <span className="nav-link active" >Events</span>
+        </li>
+
+        <li key={uuid()} className="nav-item">
+          <span className="nav-link active" >Campus Ninjas</span>
+        </li>
+
+        <li key={uuid()} className="nav-item">
+          <span className="nav-link active" >Blog</span>
+        </li>
+        <li key={uuid()} className="nav-item">
+          <span className="nav-link active" ><b>(Note this nav bar is not working)</b></span>
+        </li>
+
+       
         
       </ul>
            </div>
